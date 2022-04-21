@@ -28,7 +28,8 @@
         <div class="modal-body p-4 text-center">
             <h4 class="mb-0">Sign into your account</h4>
           </div>
-        <form action="#" method="GET">
+        <form action="{% url 'login' %}" method="POST">
+          {% csrf_token %}
 
             <div class="modal-body p-5 pt-0">
                 <form class="">
@@ -39,28 +40,29 @@
                     <div class="form-floating mb-3">
                         <input type="Password" name="Password" class="form-control rounded-4" id="floatingInput" placeholder="Password">
                     </div>
+                    <div class="modal-footer flex-column border-top-0">
+                      <button type="button" class="btn btn-lg btn-primary w-100 mx-0 mb-2">Login</button>
+                      <div class="modal-body p-4 text-center">
+                        <h6 class="mb-0">Or login with</h6>
+                      </div>
+                      <button class="w-100 py-2 mb-2 btn btn-outline-danger rounded-4" type="submit">
+                        <svg class="bi me-1" width="16" height="16"><use xlink:href="#google"/></svg>
+                        Sign up with Google
+                      </button>
+                      <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-4" type="submit">
+                        <svg class="bi me-1" width="16" height="16"><use xlink:href="#facebook"/></svg>
+                        Sign up with Facebook
+                      </button>
+            
+                      <div class="modal-body p-4 text-center">
+                        <p>Don't have an account? <a href="{% url 'register' %}" class="thembo"> Register here</a></p>
+                      </div>
+                    </div>
 
                 </form>
             </div>
 
-        <div class="modal-footer flex-column border-top-0">
-          <button type="button" class="btn btn-lg btn-primary w-100 mx-0 mb-2">Login</button>
-          <div class="modal-body p-4 text-center">
-            <h6 class="mb-0">Or login with</h6>
-          </div>
-          <button class="w-100 py-2 mb-2 btn btn-outline-danger rounded-4" type="submit">
-            <svg class="bi me-1" width="16" height="16"><use xlink:href="#google"/></svg>
-            Sign up with Google
-          </button>
-          <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-4" type="submit">
-            <svg class="bi me-1" width="16" height="16"><use xlink:href="#facebook"/></svg>
-            Sign up with Facebook
-          </button>
 
-          <div class="modal-body p-4 text-center">
-            <p>Don't have an account? <a href="{% url 'register' %}" class="thembo"> Register here</a></p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
