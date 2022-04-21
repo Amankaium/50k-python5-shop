@@ -28,7 +28,7 @@
         <div class="modal-body p-4 text-center">
             <h4 class="mb-0">Create an account</h4>
           </div>
-          {% include 'includes/messages.html' %}
+          {% include 'includs/messages.html' %}
 
           <form action="{% url 'register' %}" method="POST">
             {% csrf_token %}
