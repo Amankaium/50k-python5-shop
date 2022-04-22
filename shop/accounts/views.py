@@ -14,7 +14,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            messages.success(request, "You are logged in")
+            messages.success(request, "Вы авторизовались")
             return redirect('home')
 
         else:
@@ -33,22 +33,22 @@ def register(request):
         
         if password == confirm_password:
             if User.objects.filter(username=username).exists():
-                messages.error(request, 'username already exist')
+                messages.error(request, 'Пользователь с таким именем уже существует')
                 return redirect('register')
             else:
                 if User.objects.filter(email=email).exists():
-                    messages.error(request, 'email already exist')
+                    messages.error(request, 'Данная почта уже используется')
                     return redirect('register')
                 else:
                     user = User.objects.create_user(first_name=firstname, last_name=lastname, username=username, email=email, password=password)
                     auth.login(request, user)
-                    messages.success(request, "You are logged in")
+                    messages.success(request, "Вы авторизовались")
                     return redirect('home')
                     user.save()
-                    messages.success(request, "You are registered successfully")
+                    messages.success(request, "Регистрация прошла успешно")
                     return redirect('home')
         else:
-            messages.error(request, 'password do not match')
+            messages.error(request, 'Вы не правильно вели пороль')
             return redirect('register')
     else:
         return render(request, 'accounts/register.html')
