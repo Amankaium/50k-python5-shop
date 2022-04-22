@@ -1,3 +1,4 @@
+from email import message
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
@@ -5,6 +6,20 @@ from django.contrib import auth, messages
 # Create your views here.
 
 def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, "You are logged in")
+            return redirect('home')
+
+        else:
+            messages.error(request, 'Вы не правильно ввели логин или пароль')
+            return redirect('login')
     return render(request, 'accounts/login.html')
 
 def register(request):
