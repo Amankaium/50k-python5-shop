@@ -34,15 +34,47 @@
                                 <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
                             </ul>
                         </li>
+
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
+                    
+
                 </div>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ms-auto">
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <li class="align-content-end"><a class="nav-link"  href="{% url 'home' %}">Home</a></li>
+                    </li>
+                    <li class="nav-item">
+                        <li class="align-content-end"><a class="nav-link"  href="javascript:{document.getElementById('logout').submit()}">Выход</a></li>
+                        
+                      <form action="{% url 'logout' %}" id="logout" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden">
+                      </form>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <li class="align-content-end"><a class="nav-link"  href="{% url 'login' %}">Войти</a></li>
+                    </li>
+                    <li class="nav-item">
+                        <li class="align-content-end"></li><a class="nav-link"  href="{% url 'register' %}">Регистрация</a> </li>
+                    </li>
+                    {% endif %}
+                </ul>
+
+                <form class="d-flex">
+                    <button class="btn btn-outline-dark" type="submit">
+                        <i class="bi-cart-fill me-1"></i>
+                        Cart
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </button>
+                </form>
             </div>
         </nav>
         <!-- Header-->
@@ -57,6 +89,7 @@
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
+                {% include 'includs/messages.html' %}
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <div class="col mb-5">
                         <div class="card h-100">
