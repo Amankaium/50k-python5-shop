@@ -45,7 +45,7 @@ def register(request):
                     messages.success(request, "Вы авторизовались")
                     return redirect('home')
                     user.save()
-                    messages.success(request, "Регистрация прошла успешно")
+                    messages.success(request, "Регистрация прошла")
                     return redirect('home')
         else:
             messages.error(request, 'Вы не правильно вели пороль')
@@ -54,4 +54,7 @@ def register(request):
         return render(request, 'accounts/register.html')
 
 def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('home')
     return redirect('home')

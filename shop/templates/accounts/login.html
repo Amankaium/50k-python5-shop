@@ -1,3 +1,5 @@
+{% load socialaccount %}
+{% providers_media_js %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,10 +38,10 @@
                 
                    
                     <div class="form-floating mb-3">
-                        <input type="text" name='username' class="form-control rounded-4" id="floatingInput" placeholder="Пользователь" required>
+                        <input type="text" name='username' class="form-control rounded-4" id="floatingInput" placeholder="Пользователь">
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control rounded-4" id="floatingInput" placeholder="Введите пароль" required>
+                        <input type="password" name="password" class="form-control rounded-4" id="floatingInput" placeholder="Введите пароль">
                     </div>
                     <div class="modal-footer flex-column border-top-0">
                       <button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2">Войти</button>
@@ -47,11 +49,11 @@
                         <h6 class="mb-0">Войти с помощью</h6>
                       </div>
                       <button class="w-100 py-2 mb-2 btn btn-outline-danger rounded-4" type="submit">
-                        <svg class="bi me-1" width="16" height="16"><use xlink:href="#google"/></svg>
+                        <svg class="bi me-1" width="16" height="16"><use xlink:href="{% provider_login_url 'google' %}"/></svg>
                         Google
                       </button>
                       <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-4" type="submit">
-                        <svg class="bi me-1" width="16" height="16"><use xlink:href="#facebook"/></svg>
+                        <svg class="bi me-1" width="16" height="16"><use xlink:href="{% provider_login_url 'facebook' method='oauth2' %}"/></svg>
                         Facebook
                       </button>
             

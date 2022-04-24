@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-h&lrmm-lx_9-fi$x_=go28rn&lc=_310*%gqqq)o%w&fgb4#z$
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+LOGIN_REDIRECT_URL = 'home'
 
 # Application definition
 
@@ -40,6 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainapp',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+     
+    #  providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -142,3 +154,5 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 
 }
+
+SITE_ID = 1
