@@ -45,10 +45,10 @@ def register(request):
                     messages.success(request, "Вы авторизовались")
                     return redirect('home')
                     user.save()
-                    messages.success(request, "Регистрация прошла")
+                    messages.success(request, "Регистрация прошла успешно")
                     return redirect('home')
         else:
-            messages.error(request, 'Вы не правильно вели пороль')
+            messages.error(request, 'Вы не правильно вели пароль')
             return redirect('register')
     else:
         return render(request, 'accounts/register.html')
