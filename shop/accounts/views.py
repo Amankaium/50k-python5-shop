@@ -43,7 +43,7 @@ def register(request):
                     user = User.objects.create_user(first_name=firstname, last_name=lastname, username=username, email=email, password=password)
                     auth.login(request, user)
                     messages.success(request, "Вы авторизовались")
-                    return redirect('home')
+
                     user.save()
                     messages.success(request, "Регистрация прошла")
                     return redirect('home')
