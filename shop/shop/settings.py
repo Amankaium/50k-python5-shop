@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'card_shop',
 
      
     #  providers
@@ -151,3 +152,5 @@ MESSAGE_TAGS = {
 }
 
 SITE_ID = 1
+
+CART_SESSION_ID = 'cart'
