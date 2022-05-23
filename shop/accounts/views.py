@@ -45,7 +45,7 @@ def register(request):
                     messages.success(request, "Вы авторизовались")
 
                     user.save()
-                    messages.success(request, "Регистрация прошла")
+                    messages.success(request, "Регистрация прошла успешно")
                     return redirect('home')
         else:
             messages.error(request, 'Вы не правильно вели пороль')
