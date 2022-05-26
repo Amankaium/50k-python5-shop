@@ -6,6 +6,8 @@ from cart_shop.forms import CartAddProductForm
 def home(request):
     return render(request, 'mainapp/home.html')
 
+def product(request):
+    return render(request, 'mainapp/product.html')
 
 
 def product_detail(request, id, slug):
@@ -16,4 +18,5 @@ def product_detail(request, id, slug):
     cart_product_form = CartAddProductForm()
     return render(request, 'shop/product/detail.html', {'product': product,
                                                         'cart_product_form': cart_product_form})    
+
 
