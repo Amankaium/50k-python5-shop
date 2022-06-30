@@ -7,21 +7,22 @@
 
 
 {% block content %}
-    <h1>Your shopping cart</h1>
+    <h1 class="text" style="padding-left: 100px;">Карзина покупок</h1>
     <table class="cart">
         <thead>
         <tr>
-            <th>Картинка</th>
-            <th>Товар</th>
-            <th>Обновить количество</th>
-            <th>Удалить</th>
-            <th>Цена за штук</th>
-            <th>Общая стоимость</th>
+            <th class="text-center py-3 px-4" style="min-width: 300px;">Картинка</th>
+            <th class="text-center py-3 px-4" style="min-width: 100px;">Товар</th>
+            <th class="text-right py-3 px-4" style="width: 150px;">Обнавить количество</th>
+            <th class="text-center py-3 px-4" style="width: 120px;">Удалить</th>
+            <th class="text-right py-3 px-4" style="width: 100px;">Цена</th>
+            <th class="text-right py-3 px-4" style="width: 150px;">Общая стоимость</th>
+            <!-- <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title></a></th> -->
         </tr>
         </thead>
         <tbody>
-        {% for item in cart %}
-            {% with product=item.product %}
+            {% for item in cart %}
+            {% with products=item.products %}
                 <tr>
                     <td>
                         <a href="{{ product.get_absolute_url }}">
@@ -33,7 +34,7 @@
                                 {% endif %}">
                         </a>
                     </td>
-                    <td>{{ product.name }}</td>
+                    <td>{{ product.title }}</td>
                     <td>
                         <form action="{% url 'cart:cart_add' product.id%}" method="post">
                             {{ item.update_quantity_form.quantity }}
@@ -53,17 +54,17 @@
                     <td class="num">${{ item.total_price }}</td>
                 </tr>
             {% endwith %}
-        {% endfor %}
+            {% endfor %}
         <tr class="total">
-            <td>Total</td>
+            <td class="text" style="padding-left: 100px;">Всего</td>
             <td colspan="4"></td>
             <td class="num">${{ cart.get_total_price }}</td>
         </tr>
         </tbody>
     </table>
     <p class="text-right">
-        <a href="{% url 'shop:product_list' %}" class="button light">В магазин</a>
-        <a href="#" class="button">Оформить заказ</a>
+        <a class="btn btn-primary" href="#" role="button">В магазин</a>
+        <a class="btn btn-primary" href="#" role="button">Оформить заказ</a>
     </p>
 {% endblock %}
 </body>
