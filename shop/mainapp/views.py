@@ -1,13 +1,17 @@
 from django.shortcuts import render,get_object_or_404
-from mainapp.models import Product
 from cart_shop.forms import CartAddProductForm
-
+from .models import Product
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 # Create your views here.
 def home(request):
-    return render(request, 'mainapp/home.html')
+    products = Product.objects.all()
 
-# def product(request):
-#     return render(request, 'mainapp/product.html')
+    data = {
+        'products': products,
+    }
+    return render(request, 'mainapp/home.html', data)
+
+
 
 
 def product(request, id, slug):
@@ -20,3 +24,11 @@ def product(request, id, slug):
                                                         'cart_product_form': cart_product_form})    
 
 
+
+def base(request):
+    products = Product.objects.all()
+
+    data = {
+        'products': products,
+    }
+    return render(request, 'mainapp/base.html', data)
