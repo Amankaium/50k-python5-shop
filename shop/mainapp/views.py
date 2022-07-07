@@ -7,3 +7,5 @@ def home(request):
 def product(request):
     return render(request, 'mainapp/product.html')
 
+def about(request):
+    return render(request, 'about/about.html')
