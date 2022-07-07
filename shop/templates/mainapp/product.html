@@ -1,5 +1,5 @@
 {% extends 'includs/base.html' %}
-
+{% load static %}
 {% block content %}
         <!-- Section-->
         <section class="py-5">
@@ -9,20 +9,21 @@
             <div class="container">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Rounded Chair</h3>
-                        <h6 class="card-subtitle">globe type chair for rest</h6>
+                        {% for product in products %}
+                        <h3 class="card-title">{{ product.title }}</h3>
+                        <h6 class="card-subtitle">Новый, оригинальный.</h6>
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-sm-6">
                                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                       <div class="carousel-item active">
-                                        <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" class="d-block w-100" alt="...">
+                                        <img src="../media/redmi_1.jpg" class="d-block w-100" alt="...">
                                       </div>
                                       <div class="carousel-item">
-                                        <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" class="d-block w-100" alt="...">
+                                        <img src="../media/redmi_2.jpg" class="d-block w-100" alt="...">
                                       </div>
                                       <div class="carousel-item">
-                                        <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" class="d-block w-100" alt="...">
+                                        <img src="../media/redmi_3.jpg" class="d-block w-100" alt="...">
                                       </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
@@ -37,91 +38,98 @@
                                
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-6">
-                                <h4 class="box-title mt-5">Product description</h4>
-                                <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                                <h4 class="box-title mt-5">Описание продукта</h4>
+                                <p>{{ product.discription }}</p>
                                 <h2 class="mt-5">
-                                    $153<small class="text-success">(36%off)</small>
+                                    {{ product.price }} KGS<small class="text-success">(36%off)</small>
                                 </h2>
-                                <button class="btn btn-dark btn-rounded mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart">
+                                <!-- <button class="btn btn-dark btn-rounded mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart">
                                     <i class="fa fa-shopping-cart"></i>
-                                </button>
+                                </button> -->
+                                <button class="btn btn-dark btn-rounded mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart"> 
+                                    <i class="fa fa-shopping-cart"></i> 
+                                </button> 
                                 <button class="btn btn-primary btn-rounded">Buy Now</button>
-                                <h3 class="box-title mt-5">Key Highlights</h3>
+                                <h3 class="box-title mt-5">Основные моменты</h3>
                                 <ul class="list-unstyled">
-                                    <li><i class="fa fa-check text-success"></i>Sturdy structure</li>
-                                    <li><i class="fa fa-check text-success"></i>Designed to foster easy portability</li>
-                                    <li><i class="fa fa-check text-success"></i>Perfect furniture to flaunt your wonderful collectibles</li>
+                                    <li><i class="fa fa-check text-success"></i>Xiaomi Redmi 10C в лучших традициях флагманов выполнен из стекла.</li>
+                                    <li><i class="fa fa-check text-success"></i>Стекло смотрится отлично, приятно переливаясь на свету спокойными цветами.
+
+                                    </li>
+                                    <li><i class="fa fa-check text-success"></i>Блок с камерами и сканером отпечатка пальца выпирает.</li>
                                 </ul>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <h3 class="box-title mt-5">General Info</h3>
+                                <h3 class="box-title mt-5">Технические характеристики</h3>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-product">
                                         <tbody>
                                             <tr>
-                                                <td width="390">Brand</td>
-                                                <td>Stellar</td>
+                                                <td width="390"> 
+                                                    Производитель</td>
+                                                <td>Xiaomi</td>
                                             </tr>
                                             <tr>
-                                                <td>Delivery Condition</td>
-                                                <td>Knock Down</td>
+                                                <td>Диапазоны GSM</td>
+                                                <td>850, 900, 1800, 1900</td>
                                             </tr>
                                             <tr>
-                                                <td>Seat Lock Included</td>
-                                                <td>Yes</td>
+                                                <td>Интернет</td>
+                                                <td>GPRS, EDGE, 3G, 4G LTE</td>
                                             </tr>
                                             <tr>
-                                                <td>Type</td>
-                                                <td>Office Chair</td>
+                                                <td>Диагональ (дюйм)</td>
+                                                <td>6.71</td>
                                             </tr>
                                             <tr>
-                                                <td>Style</td>
-                                                <td>Contemporary&amp;Modern</td>
+                                                <td>Разрешение (пикс)</td>
+                                                <td>1650x720</td>
                                             </tr>
                                             <tr>
-                                                <td>Wheels Included</td>
-                                                <td>Yes</td>
+                                                <td>Встроенная память (Гб)</td>
+                                                <td>128</td>
                                             </tr>
                                             <tr>
-                                                <td>Upholstery Included</td>
-                                                <td>Yes</td>
+                                                <td>Фотокамера (Мп)</td>
+                                                <td>50 + 2 (двойная)</td>
                                             </tr>
                                             <tr>
-                                                <td>Upholstery Type</td>
-                                                <td>Cushion</td>
+                                                <td>Частота процессора (МГц)</td>
+                                                <td>2200</td>
                                             </tr>
                                             <tr>
-                                                <td>Head Support</td>
-                                                <td>No</td>
+                                                <td>Операционная система</td>
+                                                <td>NXiaomi MIUI на основе Android</td>
                                             </tr>
                                             <tr>
-                                                <td>Suitable For</td>
-                                                <td>Study&amp;Home Office</td>
+                                                <td>SIM-карта</td>
+                                                <td>nano-SIM</td>
                                             </tr>
                                             <tr>
-                                                <td>Adjustable Height</td>
-                                                <td>Yes</td>
+                                                <td>Аккумулятор (мАч)</td>
+                                                <td>5000</td>
                                             </tr>
                                             <tr>
-                                                <td>Model Number</td>
-                                                <td>F01020701-00HT744A06</td>
+                                                <td>Вес (г)</td>
+                                                <td>190</td>
                                             </tr>
                                             <tr>
-                                                <td>Armrest Included</td>
-                                                <td>Yes</td>
+                                                <td>Поддержка карт памяти</td>
+                                                <td>MicroSD, MicroSDHC, MicroSDXC</td>
                                             </tr>
                                             <tr>
-                                                <td>Care Instructions</td>
-                                                <td>Handle With Care,Keep In Dry Place,Do Not Apply Any Chemical For Cleaning.</td>
+                                                <td>Слот для карты памяти</td>
+                                                <td>отдельный</td>
                                             </tr>
                                             <tr>
-                                                <td>Finish Type</td>
-                                                <td>Matte</td>
+                                                <td>Материал корпуса</td>
+                                                <td>Пластик</td>
                                             </tr>
-                                        </tbody>
+                                        </tbody>   
                                     </table>
                                 </div>
                             </div>
+                        {% endfor %}    
                         </div>
                     </div>
                 </div>
