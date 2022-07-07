@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from email import message
 from pathlib import Path
+from attr import Factory
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'cart_shop',
     'orders',
 
      
@@ -79,6 +81,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart_shop.context_processors.cart',
             ],
         },
     },
@@ -175,3 +178,5 @@ MESSAGE_TAGS = {
 }
 
 SITE_ID = 1
+
+CART_SESSION_ID = 'cart_shop'

@@ -1,0 +1,71 @@
+{% extends "includs/base.html" %}
+{% load static %}
+
+{% block title %}
+    Карзина покупок
+{% endblock %}
+
+
+{% block content %}
+    <h1 class="text" style="padding-left: 100px;">Карзина покупок</h1>
+    <table class="cart">
+        <thead>
+        <tr>
+            <th class="text-center py-3 px-4" style="min-width: 300px;">Картинка</th>
+            <th class="text-center py-3 px-4" style="min-width: 100px;">Товар</th>
+            <th class="text-right py-3 px-4" style="width: 150px;">Обнавить количество</th>
+            <th class="text-center py-3 px-4" style="width: 120px;">Удалить</th>
+            <th class="text-right py-3 px-4" style="width: 100px;">Цена</th>
+            <th class="text-right py-3 px-4" style="width: 150px;">Общая стоимость</th>
+            <!-- <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title></a></th> -->
+        </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+            {% with products=item.products %}
+                <tr>
+                    <td>
+                        <a href="{{ product.get_absolute_url }}">
+                            <img src="
+                                {% if product.image %}
+                                    {{ product.image.url }}
+                                {% else %}
+                                    {% static 'img/no_image.png' %}
+                                {% endif %}">
+                        </a>
+                    </td>
+                    <td>{{ product.title }}</td>
+                    <td>
+                        <form action="{% url 'cart:cart_add' product.id%}" method="post">
+                            {{ item.update_quantity_form.quantity }}
+                            {{ item.update_quantity_form.update }}
+                            <input type="submit" value="Обновить">
+                            {% csrf_token %}
+                        </form>
+
+                    </td>
+                    
+                    <td>{{ item.quantity }}</td>
+                    <td><a href="{% url 'cart:cart_remove' product.id%}">Remove</a></td>
+                    <td>
+                        {{ item.quantity }}
+                    </td>
+                    <td class="num">${{ item.price }}</td>
+                    <td class="num">${{ item.total_price }}</td>
+                </tr>
+            {% endwith %}
+            {% endfor %}
+        <tr class="total">
+            <td class="text" style="padding-left: 100px;">Всего</td>
+            <td colspan="4"></td>
+            <td class="num">${{ cart.get_total_price }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a class="btn btn-primary" href="#" role="button">В магазин</a>
+        <a class="btn btn-primary" href="#" role="button">Оформить заказ</a>
+    </p>
+{% endblock %}
+</body>
+</html>
