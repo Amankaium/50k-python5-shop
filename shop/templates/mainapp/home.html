@@ -17,6 +17,7 @@
             <div class="container px-4 px-lg-5 mt-5">
                 {% include 'includs/messages.html' %}
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    {% for product in products %}
                     <div class="col mb-5">
                         {% for product in products %}
                         <div class="card h-100">
@@ -26,19 +27,18 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <p>{{ product.category }}</p>
-                                    <h5 class="fw-bolder">{{ product.title }}</h5>
+                                    <h5 class="fw-bolder">{{product.title}}</h5>
                                     <!-- Product price-->
-                                    <h5>Цена: {{ product.price }} KGS</h5>
+                                    {{product.price}}
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'product' %}">View options</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'product' %}">Страница продукта</a></div>
                             </div>
                         </div>
-                        {% endfor %}
-                    </div>                 
+                    </div>
+                    {% endfor %}                 
                 </div>
             </div>
         </section>

@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from .models import *
+from django.shortcuts import render
+from .models import Product, Category, Parameter
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
 
@@ -29,3 +31,24 @@ def product(request):
 
 
                   
+
+# Create your views here.
+def home(request):
+    products = Product.objects.all()
+
+    data = {
+        'products': products,
+    }
+    return render(request, 'mainapp/home.html', data)
+
+def product(request):
+    
+    return render(request, 'mainapp/product.html')
+
+def base(request):
+    products = Product.objects.all()
+
+    data = {
+        'products': products,
+    }
+    return render(request, 'mainapp/base.html', data)
